@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "package": "ru.vpb.cistagger.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "PlayerEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  },
+  "client": [
+    "ChatHudMixin"
+  ]
+}
