@@ -3,6 +3,7 @@ package ru.vpb.cistagger;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
@@ -65,7 +66,6 @@ public class TierTagger {
                                 if (!obj.has("nickname") || obj.get("nickname").isJsonNull()) continue;
 
                                 String nickname = obj.get("nickname").getAsString();
-                                if (nickname.equalsIgnoreCase("Fepis")) System.out.println("AIYIDFTGIUHAIJD");
 
                                 targetMap.put(nickname, tier);
                             }
@@ -139,8 +139,8 @@ public class TierTagger {
                 });
     }
 
-    public static Text appendTier(PlayerEntity player, Text baseText) {
-        MutableText tierText = getPlayerTier(player.getName().getString());
+    public static Text appendTier(Text playerName, Text baseText) {
+        MutableText tierText = getPlayerTier(Formatting.strip(playerName.getString()));
 
         if (tierText != null) {
             return Text.literal("")
@@ -153,7 +153,8 @@ public class TierTagger {
 
     @Nullable
     private static MutableText getPlayerTier(String username) {
-        String mode = Gamemode.getCurrent().getName();
+        Gamemode currentGameMode = Gamemode.getCurrent();
+        String mode = currentGameMode.getName();
 
         String foundTier = switch (mode.toLowerCase()) {
             case "vanilla" -> VANILLA_TIERS.get(username);
@@ -167,7 +168,8 @@ public class TierTagger {
             return null;
 
         int color = getTierColor(foundTier);
-        return Text.literal(foundTier).styled(style -> style.withColor(color));
+        return Text.literal(currentGameMode.getTextureCode())
+                .append(Text.literal(foundTier).styled(style -> style.withColor(color)));
     }
 
     private static int getTierColor(String tier) {
