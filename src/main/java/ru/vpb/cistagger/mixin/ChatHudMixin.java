@@ -11,16 +11,24 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import ru.vpb.cistagger.CisTagger;
 import ru.vpb.cistagger.TierTagger;
 
+import java.util.Arrays;
+
 @Mixin(ChatHud.class)
 public class ChatHudMixin {
     @Inject(method = "addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;Lnet/minecraft/client/gui/hud/MessageIndicator;)V", at = @At("HEAD"))
     private void onAddMessage(Text message, MessageSignatureData signatureData, MessageIndicator indicator, CallbackInfo ci) {
         String msg = message.getString();
-        if (msg.startsWith("Found opponent:")) {
-            String nick = msg.substring("Found opponent:".length()).trim();
+        String[] prefixes = {"Found opponent:", "Найден противник:"};
 
-            TierTagger.getTiersByNickname(nick)
-                    .thenAccept(CisTagger::sendChat);
+        for (String prefix : prefixes) {
+            if (msg.startsWith(prefix)) {
+                String nick = msg.substring(prefix.length()).trim();
+
+                TierTagger.getTiersByNickname(nick)
+                        .thenAccept(CisTagger::sendChat);
+
+                break;
+            }
         }
     }
 

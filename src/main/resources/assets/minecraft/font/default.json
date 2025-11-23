@@ -1,0 +1,53 @@
+{
+  "providers": [
+    {
+      "type": "bitmap",
+      "file": "cis-tagger:icons/dpot.png",
+      "ascent": 8,
+      "height": 8,
+      "chars": ["\uE701"]
+    },
+    {
+      "type": "bitmap",
+      "file": "cis-tagger:icons/netherite.png",
+      "ascent": 8,
+      "height": 8,
+      "chars": ["\uE702"]
+    },
+    {
+      "type": "bitmap",
+      "file": "cis-tagger:icons/op.png",
+      "ascent": 8,
+      "height": 8,
+      "chars": ["\uE703"]
+    },
+    {
+      "type": "bitmap",
+      "file": "cis-tagger:icons/smp.png",
+      "ascent": 8,
+      "height": 8,
+      "chars": ["\uE704"]
+    },
+    {
+      "type": "bitmap",
+      "file": "cis-tagger:icons/sword.png",
+      "ascent": 8,
+      "height": 8,
+      "chars": ["\uE705"]
+    },
+    {
+      "type": "bitmap",
+      "file": "cis-tagger:icons/uhc.png",
+      "ascent": 8,
+      "height": 8,
+      "chars": ["\uE706"]
+    },
+    {
+      "type": "bitmap",
+      "file": "cis-tagger:icons/vanilla.png",
+      "ascent": 8,
+      "height": 8,
+      "chars": ["\uE707"]
+    }
+  ]
+}

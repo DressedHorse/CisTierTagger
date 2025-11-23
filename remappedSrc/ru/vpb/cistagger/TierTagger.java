@@ -65,7 +65,6 @@ public class TierTagger {
                                 if (!obj.has("nickname") || obj.get("nickname").isJsonNull()) continue;
 
                                 String nickname = obj.get("nickname").getAsString();
-                                if (nickname.equalsIgnoreCase("Fepis")) System.out.println("AIYIDFTGIUHAIJD");
 
                                 targetMap.put(nickname, tier);
                             }
