@@ -13,7 +13,7 @@
 	},
 	"license": "MIT",
 	"icon": "assets/cis-tagger/icon.png",
-	"environment": "*",
+	"environment": "client",
 	"entrypoints": {
 		"client": [
 			"ru.vpb.cistagger.CisTagger"
@@ -24,11 +24,8 @@
 	],
 	"depends": {
 		"fabricloader": ">=0.17.0",
-		"minecraft": "~1.21.4",
+		"minecraft": "~1.21",
 		"java": ">=21",
 		"fabric-api": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
 	}
 }
