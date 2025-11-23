@@ -32,4 +32,4 @@ Open for contributions and feedback — feel free to submit PRs or suggestions! 
 
 ## 🧠 Requirements
 
->  Minecraft (Fabric)
+>  Fabric API
