@@ -23,13 +23,6 @@ It automatically detects and displays a player’s tier in their selected kit, a
 
 ```/cistaggerreload``` - reloads the mod
 
-
-## 📂 Contributing
-
-🔗 GitHub Repository: [CisTierTagger](https://github.com/DressedHorse/CisTierTagger)
-
-Open for contributions and feedback — feel free to submit PRs or suggestions! 🤝
-
 ## 🧠 Requirements
 
 >  Fabric API
