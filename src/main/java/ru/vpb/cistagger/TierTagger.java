@@ -21,11 +21,6 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class TierTagger {
-    private static final Map<String, String> VANILLA_TIERS = new ConcurrentHashMap<>();
-    private static final Map<String, String> SWORD_TIERS = new ConcurrentHashMap<>();
-    private static final Map<String, String> NPOT_TIERS = new ConcurrentHashMap<>();
-    private static final Map<String, String> OP_TIERS = new ConcurrentHashMap<>();
-
     public static void onInitialize() {
         updateTiers();
     }
@@ -33,10 +28,11 @@ public class TierTagger {
     public static void updateTiers() {
         HttpClient client = HttpClient.newHttpClient();
 
-        loadTiers(client, "op", OP_TIERS);
-        loadTiers(client, "vanilla", VANILLA_TIERS);
-        loadTiers(client, "sword", SWORD_TIERS);
-        loadTiers(client, "netherite", NPOT_TIERS);
+        for (Gamemode gamemode : Gamemode.values()) {
+            if (gamemode == Gamemode.NONE) continue;
+
+            loadTiers(client, gamemode.getName(), gamemode.getTierMaps());
+        }
     }
 
     private static void loadTiers(HttpClient client, String kit, Map<String, String> targetMap) {
@@ -154,15 +150,7 @@ public class TierTagger {
     @Nullable
     private static MutableText getPlayerTier(String username) {
         Gamemode currentGameMode = Gamemode.getCurrent();
-        String mode = currentGameMode.getName();
-
-        String foundTier = switch (mode.toLowerCase()) {
-            case "vanilla" -> VANILLA_TIERS.get(username);
-            case "sword" -> SWORD_TIERS.get(username);
-            case "netherite" -> NPOT_TIERS.get(username);
-            case "op" -> OP_TIERS.get(username);
-            default -> null;
-        };
+        String foundTier = currentGameMode.getTierMaps().get(username);
 
         if (foundTier == null)
             return null;

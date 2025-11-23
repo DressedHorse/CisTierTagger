@@ -14,6 +14,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import ru.vpb.cistagger.arguments.GamemodeArgument;
 import ru.vpb.cistagger.arguments.PlayerNameArgument;
+import ru.vpb.cistagger.config.ConfigManager;
 
 import static com.mojang.brigadier.arguments.StringArgumentType.word;
 
@@ -25,6 +26,8 @@ public class CisTagger implements ClientModInitializer {
 	public void onInitializeClient() {
 		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> registerCommands(dispatcher));
 		TierTagger.onInitialize();
+
+		ConfigManager.load();
 	}
 
 	private void registerCommands(CommandDispatcher<FabricClientCommandSource> dispatcher) {
