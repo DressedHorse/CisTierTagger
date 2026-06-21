@@ -8,8 +8,7 @@
 		"vpb_"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/DressedHorse/CisTierTagger"
 	},
 	"license": "MIT",
 	"icon": "assets/cis-tagger/icon.png",
